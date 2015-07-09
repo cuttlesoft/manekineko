@@ -42,12 +42,15 @@ class DefaultConfig(BaseConfig):
 
     # Flask-Sqlalchemy: http://packages.python.org/Flask-SQLAlchemy/config.html
     SQLALCHEMY_ECHO = True
+
     # SQLITE
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + INSTANCE_FOLDER_PATH + '/db.sqlite'
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + INSTANCE_FOLDER_PATH + '/%s.sqlite' % BaseConfig.PROJECT
+
     # MySQL
-    # SQLALCHEMY_DATABASE_URI = 'mysql://username:password@localhost/db?charset=utf8'
+    SQLALCHEMY_DATABASE_URI = 'mysql://root@localhost/%s?charset=utf8' % BaseConfig.PROJECT
+
     # PostgreSQL
-    # SQLALCHEMY_DATABASE_URI = 'postgres://ss:ss@localhost/db'
+    # SQLALCHEMY_DATABASE_URI = 'postgresql://root@localhost/%s' % BaseConfig.PROJECT
 
     # Flask-babel: http://pythonhosted.org/Flask-Babel/
     ACCEPT_LANGUAGES = ['zh']

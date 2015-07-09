@@ -7,6 +7,7 @@
 """
 
 import os
+import sqlalchemy
 
 from flask.ext.script import Manager
 from flask.ext.migrate import MigrateCommand
@@ -32,7 +33,13 @@ manager.add_command('db', MigrateCommand)
 def initdb():
     """Init/reset database."""
 
-    db.drop_all()
+    try:
+        db.drop_all()
+    except sqlalchemy.exc.OperationalError:
+        URI = app.config['SQLALCHEMY_DATABASE_URI'][:app.config['SQLALCHEMY_DATABASE_URI'].rfind('/')]
+        engine = sqlalchemy.create_engine(URI)
+        engine.execute("CREATE DATABASE fbone")
+
     db.create_all()
 
     admin = User(
@@ -52,8 +59,8 @@ def initdb():
 def tests():
     """Run the tests."""
     import pytest
-    exit_code = pytest.main([os.path.join(PROJECT_PATH, 'tests'), '--verbose'])
-    return exit_code
+    cmd = pytest.main([os.path.join(PROJECT_PATH, 'tests'), '--verbose'])
+    return cmd
 
 
 if __name__ == "__main__":
