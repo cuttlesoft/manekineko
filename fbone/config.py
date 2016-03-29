@@ -42,6 +42,7 @@ class DefaultConfig(BaseConfig):
 
     # Flask-Sqlalchemy: http://packages.python.org/Flask-SQLAlchemy/config.html
     SQLALCHEMY_ECHO = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     # SQLITE
     SQLALCHEMY_DATABASE_URI = 'sqlite:///%s/%s.sqlite' % (INSTANCE_FOLDER_PATH, BaseConfig.PROJECT)

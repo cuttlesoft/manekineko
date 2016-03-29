@@ -21,7 +21,7 @@ def load_user(id):
 @user.route('/')
 @login_required
 def index(offset=0):
-    if not current_user.is_authenticated():
+    if not current_user.is_authenticated:
         abort(403)
     return render_template('user/index.html', user=current_user)
 

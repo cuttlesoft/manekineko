@@ -16,7 +16,7 @@ frontend = Blueprint('frontend', __name__)
 
 @frontend.route('/create_profile', methods=['GET', 'POST'])
 def create_profile():
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         return redirect(url_for('user.index'))
 
     form = CreateProfileForm(name=request.args.get('name'),
@@ -36,7 +36,7 @@ def create_profile():
 def index():
     current_app.logger.debug('debug')
 
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         return redirect(url_for('user.index'))
     return render_template('index.html')
 
@@ -55,7 +55,7 @@ def search():
 
 @frontend.route('/login', methods=['GET', 'POST'])
 def login():
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         return redirect(url_for('user.index'))
 
     form = LoginForm(login=request.args.get('login', None),
@@ -104,7 +104,7 @@ def logout():
 
 @frontend.route('/signup', methods=['GET', 'POST'])
 def signup():
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         return redirect(url_for('user.index'))
 
     form = SignupForm(next=request.args.get('next'))
@@ -121,7 +121,7 @@ def signup():
 @frontend.route('/change_password', methods=['GET', 'POST'])
 def change_password():
     user = None
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         if not login_fresh():
             return login_manager.needs_refresh()
         user = current_user

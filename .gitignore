@@ -23,3 +23,6 @@ production.py
 logs
 uploads
 logo.png
+
+tests/.cache/
+tests/__pycache__/
