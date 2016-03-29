@@ -11,15 +11,15 @@
 
 *.db
 *.sqlite
+.DS_Store
 
 dist
 build
+.webassets-cache
 
+config/*
 instance
 production.py
 logs
 uploads
-openid
-env
-config.py
 logo.png

@@ -1,7 +1,16 @@
 # -*- coding: utf-8 -*-
+"""
+    fbone.extensions
+    ~~~~~~~~~~~~~~~~
+
+    flask extension initializations
+"""
 
 from flask.ext.sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
+
+from flask.ext.migrate import Migrate
+migrate = Migrate()
 
 from flask.ext.mail import Mail
 mail = Mail()
@@ -12,5 +21,4 @@ cache = Cache()
 from flask.ext.login import LoginManager
 login_manager = LoginManager()
 
-from flask.ext.openid import OpenID
-oid = OpenID()
+# add redis here

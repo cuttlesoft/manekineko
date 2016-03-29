@@ -2,7 +2,7 @@
 
 from werkzeug.urls import url_quote
 
-from fbone.user import User
+from fbone.modules.user import User
 from fbone.extensions import db, mail
 
 from tests import TestCase
