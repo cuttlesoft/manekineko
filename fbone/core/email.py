@@ -7,15 +7,15 @@
     Convenience functions for sending email from any view or Celery task.
 """
 
-from contextlib import contextmanager
 import hashlib
+from contextlib import contextmanager
 from logging import getLogger
 
 from flask import current_app
 from flask.ext.mail import Message
 from werkzeug.debug import tbtools
 
-from fbone.extensions import mail, redis
+from fbone.core.extensions import mail, redis
 
 LOG = getLogger(__name__)
 

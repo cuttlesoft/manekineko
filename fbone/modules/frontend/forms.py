@@ -10,9 +10,12 @@ from wtforms.validators import (Required, Length, EqualTo, Email)
 from flask.ext.babel import lazy_gettext as _
 
 from fbone.modules.user import User
-from fbone.utils import (PASSWORD_LEN_MIN, PASSWORD_LEN_MAX,
-        USERNAME_LEN_MIN, USERNAME_LEN_MAX)
-from fbone.extensions import db
+from fbone.core.utils import (
+    PASSWORD_LEN_MIN,
+    PASSWORD_LEN_MAX,
+    USERNAME_LEN_MIN,
+    USERNAME_LEN_MAX)
+from fbone.core.extensions import db
 
 
 class LoginForm(Form):

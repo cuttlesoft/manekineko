@@ -7,24 +7,47 @@
 """
 
 import os
+import logging
 import pytest
 
+import sqlalchemy
 # from alembic.command import upgrade
 # from alembic.config import Config
 
 from fbone.factory import create_app
 from fbone.config import TestConfig
-from fbone.extensions import db as _db
-from fbone.utils import INSTANCE_FOLDER_PATH
+from fbone.core.extensions import db as _db
+from fbone.core.utils import INSTANCE_FOLDER_PATH
 
 
 @pytest.fixture(scope='session')
 def app(request):
     """Session-wide test `Flask` application."""
     app = create_app()
+
+    # test config
     app.config.from_object(TestConfig)
 
-    # Establish an application context before running the tests.
+    # to setup your own local test config, put a config file in tmp/instance, then
+    # $ export FBONE_TEST_CFG=your-local-test.cfg
+    if 'FBONE_TEST_CFG' in os.environ:
+        app.config.from_envvar('FBONE_TEST_CFG')
+
+    # hush the loggers, they dirty up our stdout
+    log = logging.getLogger('werkzeug')
+    log.setLevel(logging.ERROR)
+    app.logger.disabled = True
+
+    # we'll make Flask's test client a little easier to use
+    app.client = app.test_client()
+
+    # and we need to create the database if we're using MySQL
+    if 'mysql' in app.config['SQLALCHEMY_DATABASE_URI']:
+        URI = app.config['SQLALCHEMY_DATABASE_URI'][:app.config['SQLALCHEMY_DATABASE_URI'].rfind('/')]
+        engine = sqlalchemy.create_engine(URI)
+        engine.execute("CREATE DATABASE %s" % app.config['DB_NAME'])
+
+    # finally, establish an application context before running the tests.
     ctx = app.app_context()
     ctx.push()
 

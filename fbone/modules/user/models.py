@@ -12,9 +12,9 @@ from sqlalchemy import Column
 from werkzeug import generate_password_hash, check_password_hash
 from flask.ext.login import UserMixin
 
-from fbone.types import DenormalizedText
-from fbone.extensions import db
-from fbone.utils import get_current_time, GENDER_TYPE, STRING_LEN
+from fbone.core.types import DenormalizedText
+from fbone.core.extensions import db
+from fbone.core.utils import get_current_time, GENDER_TYPE, STRING_LEN
 from fbone.modules.base import Base
 from .constants import USER, USER_ROLE, ADMIN, INACTIVE, USER_STATUS
 

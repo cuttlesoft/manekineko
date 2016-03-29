@@ -13,12 +13,11 @@ from flask.ext.script import Manager
 from flask.ext.migrate import MigrateCommand
 
 from fbone import create_app
-from fbone.extensions import db
-from fbone.utils import PROJECT_PATH, MALE
+from fbone.core.extensions import db
+from fbone.core.utils import PROJECT_PATH, MALE
 from fbone.modules.user import User, ADMIN, ACTIVE
 
 from fbone.modules.user.commands import CreateUserCommand, DeleteUserCommand, ListUsersCommand
-
 
 app = create_app()
 manager = Manager(create_app)
@@ -59,7 +58,7 @@ def initdb():
 def tests():
     """Run the tests."""
     import pytest
-    cmd = pytest.main([os.path.join(PROJECT_PATH, 'tests'), '--verbose'])
+    cmd = pytest.main([os.path.join(PROJECT_PATH, '../tests'), '--verbose'])
     return cmd
 
 

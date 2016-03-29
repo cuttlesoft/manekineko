@@ -10,7 +10,7 @@ from factory import Sequence
 from factory.alchemy import SQLAlchemyModelFactory
 
 from fbone.modules.user import User
-from fbone.extensions import db
+from fbone.core.extensions import db
 
 
 class BaseFactory(SQLAlchemyModelFactory):

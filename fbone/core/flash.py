@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    fbone.core.email
+    fbone.core.flash
     ~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Convenience wrappers for flask.flash() with special-character handling.

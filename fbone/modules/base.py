@@ -10,7 +10,7 @@
 from sqlalchemy import Column, Integer
 from sqlalchemy.ext.declarative import declared_attr
 
-from fbone.extensions import db
+from fbone.core.extensions import db
 
 
 class Base(db.Model):

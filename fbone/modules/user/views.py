@@ -5,7 +5,7 @@ import os
 from flask import Blueprint, render_template, send_from_directory, abort, redirect, url_for, flash
 from flask import current_app as APP
 from flask.ext.login import login_user, login_required, current_user
-from fbone.extensions import db, login_manager
+from fbone.core.extensions import db, login_manager
 from fbone.core.oauth import OAuthSignIn
 from .models import User, UsersSocialAccount
 

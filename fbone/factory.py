@@ -5,15 +5,15 @@ import os
 from flask import Flask, request, render_template
 from flask.ext.babel import Babel
 
-from fbone import assets
+from fbone.core import assets
 from fbone.config import DefaultConfig
 from fbone.modules.user import User, user
 from fbone.modules.settings import settings
 from fbone.modules.frontend import frontend
 from fbone.modules.api import api
 from fbone.modules.admin import admin
-from fbone.extensions import db, migrate, mail, cache, login_manager
-from fbone.utils import PROJECT_PATH, INSTANCE_FOLDER_PATH
+from fbone.core.extensions import db, migrate, mail, cache, login_manager
+from fbone.core.utils import PROJECT_PATH, INSTANCE_FOLDER_PATH
 
 
 # For import *
@@ -36,10 +36,10 @@ def create_app(config=None, app_name=None, blueprints=None):
     if blueprints is None:
         blueprints = DEFAULT_BLUEPRINTS
 
-    app = Flask(app_name, instance_path=INSTANCE_FOLDER_PATH, instance_relative_config=True)
-
-    # Init assets
-    assets.init_app(app)
+    app = Flask(
+        app_name,
+        instance_path=INSTANCE_FOLDER_PATH,
+        instance_relative_config=True)
 
     configure_app(app, config)
     configure_hook(app)
@@ -81,6 +81,9 @@ def configure_extensions(app):
 
     # flask-cache
     cache.init_app(app)
+
+    # flask-assets
+    assets.init_app(app)
 
     # flask-babel
     babel = Babel(app)

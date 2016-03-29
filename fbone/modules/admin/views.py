@@ -7,7 +7,7 @@ from flask import (Blueprint, render_template, request, flash, current_app, send
 from flask.ext.login import login_required
 from flask.ext.babel import Babel
 
-from fbone.decorators import admin_required
+from fbone.core.decorators import admin_required
 from fbone.modules.user import User
 from .forms import UserForm, EditTranslationForm, UploadLogoForm
 

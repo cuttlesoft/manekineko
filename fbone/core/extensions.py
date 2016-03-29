@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    fbone.extensions
+    fbone.core.extensions
     ~~~~~~~~~~~~~~~~
 
     flask extension initializations

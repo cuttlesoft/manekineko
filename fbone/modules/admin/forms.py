@@ -4,7 +4,7 @@ from flask.ext.wtf import Form
 from wtforms import (HiddenField, SubmitField, RadioField, FileField, DateField)
 from wtforms.validators import AnyOf
 
-from fbone.extensions import db
+from fbone.core.extensions import db
 from fbone.modules.user import USER_ROLE, USER_STATUS
 
 

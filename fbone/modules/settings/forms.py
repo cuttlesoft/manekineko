@@ -7,16 +7,26 @@ from datetime import datetime
 from flask import current_app
 from flask.ext.wtf import Form
 from flask.ext.wtf.html5 import EmailField
-from wtforms import (ValidationError, TextField, HiddenField, PasswordField, SubmitField,
-    TextAreaField, IntegerField, RadioField, FileField)
+from wtforms import (
+    ValidationError,
+    HiddenField,
+    PasswordField,
+    SubmitField,
+    TextAreaField,
+    RadioField,
+    FileField)
 from wtforms.validators import (Required, Length, EqualTo, Email, AnyOf, Optional)
 from flask.ext.babel import lazy_gettext as _
 from flask.ext.login import current_user
 
-from fbone.utils import PASSWORD_LEN_MIN, PASSWORD_LEN_MAX
-from fbone.utils import allowed_file, ALLOWED_AVATAR_EXTENSIONS, make_dir
-from fbone.utils import GENDER_TYPE
-from fbone.extensions import db
+from fbone.core.utils import (
+    PASSWORD_LEN_MIN,
+    PASSWORD_LEN_MAX,
+    allowed_file,
+    ALLOWED_AVATAR_EXTENSIONS,
+    make_dir,
+    GENDER_TYPE)
+from fbone.core.extensions import db
 from fbone.modules.user import User
 
 

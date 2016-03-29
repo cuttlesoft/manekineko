@@ -7,7 +7,7 @@ from flask.ext.login import (login_required, login_user, current_user, logout_us
 from flask.ext.babel import gettext as _
 
 from fbone.modules.user import User
-from fbone.extensions import mail, login_manager
+from fbone.core.extensions import mail, login_manager
 from .forms import (SignupForm, LoginForm, RecoverPasswordForm, ReauthForm, ChangePasswordForm, CreateProfileForm)
 
 
