@@ -75,8 +75,6 @@ Then open `http://127.0.0.1:5000`
     ├── fbone
     │   ├── factory.py              (application factory)
     │   ├── config.py               (config module)
-    │   ├── decorators.py           (route decorators)
-    │   ├── extensions.py           (flask extensions)
     │   ├── modules                 (MVC modules)
     │   │   ├── admin               (admin module)
     │   │   ├── api                 (api module)
@@ -90,10 +88,15 @@ Then open `http://127.0.0.1:5000`
     │   │       ├── models.py
     │   │       └── views.py
     │   ├── core                    (core app utilities)
-    │   │   ├── email.py            (email methods)
+    │   │   ├── assets.py           (flask-assets web-assets manager)
+    │   │   ├── decorators.py       (route decorators)
+    │   │   ├── email.py            (email methods)
+    │   │   ├── extensions.py       (flask extensions)
     │   │   ├── flash.py            (flask.flash() wrapper)
     │   │   ├── helpers.py          (convenience functions and classes)
-    │   │   └── oauth.py            (oauth settings and provider logic)
+    │   │   ├── oauth.py            (oauth settings and provider logic)
+    │   │   ├── types.py            (custom column types and extensions)
+    │   │   └── utils.py            (utility methods, like `get_current_date()`)
     │   ├── static
     │   │   ├── css
     │   │   ├── img
